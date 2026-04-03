@@ -60,9 +60,8 @@ ORDEM_GEO = ["Maranhão", "Nordeste", "Brasil"]
 
 # ── SIDEBAR ───────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/"
-             "Bras%C3%A3o_do_Maranh%C3%A3o.svg/200px-Bras%C3%A3o_do_Maranh%C3%A3o.svg.png",
-             width=80)
+    st.image("assets/logo-coreconma.webp",
+             width=180)
     st.title("Filtros")
 
     periodo = st.slider(

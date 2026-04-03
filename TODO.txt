@@ -1,0 +1,5 @@
+- Voltar no claude para fazer o passo que ele passou no GIT
+
+
+TODO - Ajustes
+- No resultados de distribuição geográfica tem erro em alguns municípios. Ajustar
