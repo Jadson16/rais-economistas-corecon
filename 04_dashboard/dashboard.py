@@ -44,14 +44,18 @@ FAIXA_ETARIA = {
 }
 df["faixa_etaria_desc"] = df["faixa_etaria"].map(FAIXA_ETARIA).fillna("Não informado")
 
-MUNICIPIOS_MA = {
-    "2111300": "São Luís",       "2105302": "Imperatriz",
-    "2111706": "São José de Ribamar", "2109700": "Paço do Lumiar",
-    "2101400": "Açailândia",     "2112209": "Timon",
-    "2104701": "Caxias",         "2103000": "Bacabal",
-    "2107803": "Codó",           "2106805": "Balsas",
-    "2108405": "Santa Inês",     "2109403": "Pinheiro",
-}
+@st.cache_data
+def carregar_municipios_ma():
+    import requests
+    try:
+        url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/21/municipios"
+        resp = requests.get(url, timeout=10)
+        data = resp.json()
+        return {str(m["id"]): m["nome"] for m in data}
+    except Exception:
+        return {}
+
+MUNICIPIOS_MA = carregar_municipios_ma()
 
 ANOS      = sorted(df["ano"].unique())
 ANO_MIN   = int(min(ANOS))
